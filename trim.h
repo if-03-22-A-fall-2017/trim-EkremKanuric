@@ -16,5 +16,5 @@
 #include <stdbool.h>
 #define STRLEN 50
 
-void trim	(	const char * source,char * trimmed_string);		
+void trim	(	const char * source,char * trimmed_string);
 #endif

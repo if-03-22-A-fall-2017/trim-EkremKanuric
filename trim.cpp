@@ -1,5 +1,5 @@
 /*----------------------------------------------------------
- *				HTBLA-Leonding / Klasse: <your class>
+ *				HTBLA-Leonding / Klasse: 2AHIF
  * ---------------------------------------------------------
  * Exercise Number: 0
  * Title:			trim.cpp
@@ -11,10 +11,19 @@
  * ----------------------------------------------------------
  */
  #include "trim.h"
+ #define SOURCE_LENGTH strlen(source)
  void trim	(	const char * source,char * trimmed_string)
  {
+   int length = 0;
+   for (int i = 0; i < SOURCE_LENGTH; i++) {
+     if (source[i] >= 65 && source[i] <= 122 || source[i] == 32) {
+       length++;
+     }
+   }
+
    bool x = false;
    int count = 0;
+   int count1 = length;
    //check where to begin the trimmed_array
    while (!x)
    {
@@ -27,24 +36,21 @@
        x = true;
      }
    }
-   //check when to end copy array
    x = false;
-   int count1 = count;
-   while(!x)
+   while (!x)
    {
-     if (source[count1] == ' ' && source[count1 + 1] == ' ')
+     if (source[count1] == ' ')
      {
-       x = true;
+         count1--;
      }
      else
      {
-       count1++;
+       x = true;
      }
    }
    char array[STRLEN];
-   for (int i = count; i < count1; i++)
-   {
-     array[i - count] = source[i];
+   for (int i = 0; i < count1;i++) {
+     array[i] = source[i+count];
    }
-   strcpy(trimmed_string, array);
+   strcpy(trimmed_string,array);
  }
